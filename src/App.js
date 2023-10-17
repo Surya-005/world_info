@@ -1,25 +1,32 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import Heading from './heading';
+import Main from './main';
+import { Route, Routes } from "react-router-dom";
+import Sub from './sub';
 
 function App() {
+let [data,setdata]=useState([])
+let [error,seterror]=useState(null)
+
+useEffect(()=>{
+  const fetch_api=async()=>{
+    let fetch_data=await fetch("https://restcountries.com/v3.1/all");
+    let response=await fetch_data.json()
+    setdata(response)
+  }
+  fetch_api()
+},[])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+    <Heading/>
+    <Routes>
+      <Route path="/" element={ <Main  data={data}/>}/>
+      <Route path="/sub" element={<Sub />}/>
+    </Routes>
+   
+    </>
+    );
 }
 
 export default App;

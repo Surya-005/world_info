@@ -1,38 +1,52 @@
-.App {
-  text-align: center;
+nav{
+    display: flex;
+    justify-content: space-between;
+    padding:  0.5em;
+    align-items: center;
+    position: sticky;
+    top: 0%;
+    right: 0%;
+    left: 0%;
+    z-index: 10;
+    background: #321853;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#logo{
+    color: #bf9553;
+    text-transform: uppercase;
+    font-size: 3em;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#logo span {
+    display: inline-block;
+    font-size: 0.8em;
+    animation: globe 5s ease-in-out  infinite alternate;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@keyframes globe {
+    from{
+        transform: rotatey(0deg);
+    }
+    to{
+        transform: rotatey(360deg);
+    }
 }
-
-.App-link {
-  color: #61dafb;
+.searchbar{
+    position: relative;
+    margin-right: 2em;
+    display: flex;
+    align-items: center;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.searchbar input{
+    background-color: transparent;
+    border:3px solid #b97f24;
+    color:#bf9553;
+    outline: none;
+    font-size: 1.5em;
+    border-radius: 1em;
+}
+.searchbar span{
+    display: inline-block;
+    position: absolute;
+    color:#bf9553;
+    right: 5%;
+    font-size: 1.3em;
+    cursor: pointer;
 }
